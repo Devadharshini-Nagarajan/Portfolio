@@ -1,0 +1,195 @@
+---
+const experiences = [
+  {
+    role: "Systems Developer",
+    company: "Co-operators",
+    period: "Jul 2024 — Present",
+    location: "Toronto, Canada",
+    description:
+      "Owned end-to-end delivery of Angular features supporting core insurance workflows. Supported migration from legacy SOAP APIs to NestJS REST BFF layer with OpenAPI-driven contracts. Led adoption of Playwright for automated testing, achieving ~70% coverage on critical workflows.",
+    tech: ["Angular", "TypeScript", "NestJS", "Playwright", "Dynatrace"],
+  },
+  {
+    role: "Software Developer (Contract)",
+    company: "FleetOperate",
+    period: "Oct 2022 — Dec 2022",
+    location: "Toronto, Canada",
+    description:
+      "Worked within an Nx Angular monorepo, resolving complex issues across tightly coupled modules with 97% on-time delivery. Contributed to backend development in an AWS serverless environment, enhancing RESTful APIs for greater resilience and predictability.",
+    tech: ["Angular", "Nx", "AWS", "Serverless", "TypeScript"],
+  },
+  {
+    role: "Frontend Developer",
+    company: "Karkhana.io",
+    period: "Nov 2021 — Aug 2022",
+    location: "Remote",
+    description:
+      "Converted a data-intensive React web app into a PWA, improving usability for non-technical factory operators. Built CI/CD pipelines with GitHub Actions and NGINX on GCP, cutting deployment time from ~30 minutes to under 5. Integrated Sentry, GTM, and WebSocket-based real-time messaging.",
+    tech: ["React", "PWA", "GitHub Actions", "GCP", "NGINX", "Sentry"],
+  },
+  {
+    role: "Software Developer",
+    company: "D Cube Analytics",
+    period: "Oct 2019 — Nov 2021",
+    location: "Remote",
+    description:
+      "Delivered features across 15+ internal applications using React, Angular, and Vue. Built a React/Redux patient record-matching tool for a U.S. pharmaceutical client, halving duplicate-record review time. Initiated a Storybook-powered design system published as an npm package. Mentored 2 interns and a junior developer.",
+    tech: ["React", "Redux", "Angular", "Vue.js", "Storybook", "npm"],
+  },
+];
+---
+
+<section id="experience">
+  <div class="container">
+    <p class="section-label">Where I've Been</p>
+    <h2 class="section-title">Experience</h2>
+
+    <div class="timeline">
+      {experiences.map((exp, i) => (
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+            {i < experiences.length - 1 && <div class="marker-line"></div>}
+          </div>
+          <div class="timeline-content">
+            <div class="exp-header">
+              <div>
+                <h3 class="exp-role">{exp.role}</h3>
+                <p class="exp-company">{exp.company} · <span class="exp-location">{exp.location}</span></p>
+              </div>
+              <span class="exp-period">{exp.period}</span>
+            </div>
+            <p class="exp-desc">{exp.description}</p>
+            <div class="exp-tech">
+              {exp.tech.map(t => <span class="tech-tag">{t}</span>)}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #experience {
+    background: var(--white);
+    border-top: 1px solid var(--sand);
+    border-bottom: 1px solid var(--sand);
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1.5rem;
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.35rem;
+  }
+
+  .marker-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px var(--terracotta);
+    flex-shrink: 0;
+  }
+
+  .marker-line {
+    width: 2px;
+    flex: 1;
+    background: var(--sand);
+    margin: 0.5rem 0;
+    min-height: 2rem;
+  }
+
+  .timeline-content {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 1rem;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.2s;
+  }
+
+  .timeline-content:hover {
+    box-shadow: 0 6px 24px rgba(44, 36, 34, 0.07);
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .exp-role {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 0.2rem;
+  }
+
+  .exp-company {
+    font-size: 0.875rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .exp-location {
+    font-style: italic;
+  }
+
+  .exp-period {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--terracotta);
+    background: rgba(201, 106, 58, 0.08);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .exp-desc {
+    color: var(--charcoal-soft);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .exp-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tech-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    background: var(--white);
+    border: 1px solid var(--sand);
+    color: var(--charcoal-soft);
+    padding: 0.2rem 0.65rem;
+    border-radius: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .exp-header { flex-direction: column; }
+    .exp-period { align-self: flex-start; }
+  }
+</style>

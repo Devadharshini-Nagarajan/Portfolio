@@ -1,0 +1,171 @@
+---
+const skillGroups = [
+  {
+    category: "Languages",
+    skills: ["JavaScript", "TypeScript", "Python", "Java", "PL/SQL"],
+  },
+  {
+    category: "Frontend",
+    skills: [
+      "Angular",
+      "React",
+      "Vue.js",
+      "RxJS",
+      "NgRx",
+      "Redux",
+      "VueX",
+      "Quasar",
+      "HTML5",
+      "CSS3",
+      "SCSS",
+    ],
+  },
+  {
+    category: "UI Libraries",
+    skills: [
+      "Bootstrap",
+      "Ant Design",
+      "Angular Material",
+      "Material UI",
+      "Chakra UI",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    category: "Backend & APIs",
+    skills: [
+      "Node.js",
+      "NestJS",
+      "Express",
+      "Spring Boot",
+      "Serverless",
+      "Nx",
+      "REST APIs",
+      "OpenAPI",
+    ],
+  },
+  {
+    category: "Testing & Quality",
+    skills: [
+      "Playwright",
+      "Cypress",
+      "Jest",
+      "Vitest",
+      "WCAG Accessibility",
+      "i18n",
+    ],
+  },
+  {
+    category: "Tools & Platforms",
+    skills: [
+      "Git",
+      "GitHub Actions",
+      "Docker",
+      "AWS",
+      "GCP",
+      "Postman",
+      "Figma",
+      "Jira",
+    ],
+  },
+
+  {
+    category: "Practices",
+    skills: [
+      "Agile",
+      "Code Review",
+      "Mentoring",
+      "Performance Optimization",
+      "CI/CD",
+    ],
+  },
+];
+---
+
+<section id="skills">
+  <div class="container">
+    <p class="section-label">What I Work With</p>
+    <h2 class="section-title">Skills & Tools</h2>
+
+    <div class="skills-grid">
+      {
+        skillGroups.map((group) => (
+          <div class="skill-group">
+            <h3 class="group-title">{group.category}</h3>
+            <div class="divider" />
+            <ul class="skill-list">
+              {group.skills.map((skill) => (
+                <li class="skill-tag">{skill}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+
+  .skill-group {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 1rem;
+    padding: 1.75rem;
+    transition:
+      box-shadow 0.2s,
+      transform 0.2s;
+  }
+
+  .skill-group:hover {
+    box-shadow: 0 8px 30px rgba(44, 36, 34, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .group-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 0;
+  }
+
+  .divider {
+    width: 2rem;
+    height: 2px;
+    background: var(--terracotta);
+    margin: 0.75rem 0 1.25rem;
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    color: var(--charcoal-soft);
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    padding: 0.3rem 0.75rem;
+    border-radius: 2rem;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      border-color 0.2s;
+  }
+
+  .skill-tag:hover {
+    background: var(--terracotta);
+    color: var(--white);
+    border-color: var(--terracotta);
+  }
+</style>

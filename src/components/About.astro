@@ -1,0 +1,124 @@
+---
+
+---
+
+<section id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-left">
+        <p class="section-label">About Me</p>
+        <h2 class="section-title">
+          A developer who<br /><em>doesn’t stop learning</em>
+        </h2>
+      </div>
+      <div class="about-right">
+        <p class="lead">
+          I'm a software developer with 5 years of experience building web
+          applications. I balance a strong frontend toolkit — Angular, React,
+          TypeScript — with hands-on Node backend, testing, and CI/CD
+          experience. I care about real-world quality, maintainability, and
+          getting things done with intent.
+        </p>
+        <p>
+          I’ve built features end-to-end: from architecture and API integration
+          to delivery and optimization. In my free time, I love talking with a
+          friend about the tech world, solving puzzles, and building actual
+          Legos.
+        </p>
+        <p>
+          Basically I’m someone who constantly keeps learning with a growth
+          mindset, picks up frameworks and languages quickly, and with the right
+          guidance gets the job done efficiently.
+        </p>
+        <div class="about-quote">
+          <span class="quote-mark">"</span>
+          <p>
+            A developer who keeps learning, grows fast, and delivers with grit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #about {
+    background: var(--white);
+    border-top: 1px solid var(--sand);
+    border-bottom: 1px solid var(--sand);
+  }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-left {
+    position: sticky;
+    top: 8rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .lead {
+    font-size: 1.15rem;
+    color: var(--charcoal);
+    line-height: 1.8;
+    font-weight: 400;
+  }
+
+  p {
+    color: var(--charcoal-soft);
+    line-height: 1.85;
+  }
+
+  .about-quote {
+    margin-top: 1rem;
+    padding: 1.5rem 1.75rem;
+    border-left: 3px solid var(--terracotta);
+    background: var(--cream);
+    border-radius: 0 0.75rem 0.75rem 0;
+    position: relative;
+  }
+
+  .quote-mark {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: var(--terracotta);
+    opacity: 0.2;
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    line-height: 1;
+  }
+
+  .about-quote p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--charcoal);
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    .about-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .about-left {
+      position: static;
+    }
+  }
+</style>

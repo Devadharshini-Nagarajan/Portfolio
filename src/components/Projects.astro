@@ -1,0 +1,329 @@
+---
+const projects = [
+  {
+    title: "FinBuddy",
+    description:
+      "A full-stack personal finance application with an Angular frontend and NestJS backend backed by PostgreSQL. Built for tracking budgets, expenses, and financial goals with a clean, responsive UI.",
+    image: "",
+    video: "",
+    liveUrl: "",
+    githubUrl:
+      "https://github.com/Devadharshini-Nagarajan/angular-workspace/tree/project/finbuddy",
+    tech: ["Node", "NestJS", "Angular", "TypeScript", "PostgreSQL"],
+    featured: true,
+  },
+  {
+    title: "Data Aggregation & Secure Interconnection System",
+    description:
+      "A microservices-based system using Spring Boot with a Discovery Server and a React frontend. Demonstrates secure service-to-service communication, API aggregation, and scalable backend architecture.",
+    image: "",
+    video: "",
+    liveUrl: "",
+    githubUrl:
+      "https://github.com/Devadharshini-Nagarajan/webdev-springboot-all",
+    tech: ["Spring Boot", "React", "Microservices", "Java"],
+    featured: true,
+  },
+  {
+    title: "Aurora Blogs",
+    description:
+      "A full-featured blogging platform built with JSP, Servlets, and JavaScript. Supports user authentication, post creation and management, and a dynamic reading experience.",
+    image: "",
+    video: "",
+    liveUrl: "",
+    githubUrl: "https://github.com/Devadharshini-Nagarajan/Aurora-Blogs-JSP",
+    tech: ["JSP", "Servlets", "JavaScript", "Java"],
+    featured: false,
+  },
+  {
+    title: "Mini Apps Collection",
+    description:
+      "A set of interactive, learning-focused mini apps deployed on Netlify for fast demo and exploration.",
+    image: "",
+    video: "",
+    liveUrl: "",
+    githubUrl:
+      "https://github.com/Devadharshini-Nagarajan#-learning--experimental-projects",
+    tech: ["React", "Vue.js", "JavaScript", "Typescript", "CSS", "HTML"],
+    miniApps: [
+      {
+        title: "Covid 19 Tracker",
+        url: "https://webofdeva-covid19tracker.netlify.app",
+      },
+      {
+        title: "Food Blog",
+        url: "https://webofdeva-foodblog.netlify.app/#/type/all",
+      },
+      { title: "Credit Card", url: "https://webofdeva-creditcard.netlify.app" },
+      { title: "Amazon Clone", url: "https://webofdeva-amazon.netlify.app" },
+      { title: "Tic Tac Toe", url: "https://webofdeva-tictactoe.netlify.app" },
+      { title: "Disney Clone", url: "https://webofdeva-disney.netlify.app" },
+      { title: "Forms", url: "https://webofdeva-fleetoperate.netlify.app" },
+
+      { title: "Quiz", url: "https://webofdeva-quiz.netlify.app" },
+      { title: "Todo", url: "https://webofdeva-todo-vue.netlify.app" },
+      { title: "Burger App", url: "https://webofdeva-burger.netlify.app" },
+    ],
+    featured: false,
+  },
+];
+---
+
+<section id="projects">
+  <div class="container">
+    <p class="section-label">What I've Built</p>
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-list">
+      {
+        projects.map((project, i) => (
+          <article
+            class={`project-card ${project.featured ? "featured" : ""} ${i % 2 === 1 ? "reverse" : ""}`}
+          >
+            <div class="project-media">
+              {project.video ? (
+                project.video.includes("youtube") ||
+                project.video.includes("youtu.be") ? (
+                  <iframe
+                    src={project.video.replace("watch?v=", "embed/")}
+                    title={project.title + " demo"}
+                    style="border:0"
+                    allowfullscreen
+                  />
+                ) : (
+                  <video src={project.video} controls muted playsinline />
+                )
+              ) : project.image ? (
+                <img src={project.image} alt={project.title} loading="lazy" />
+              ) : (
+                <div class="media-placeholder">
+                  <span>{project.title[0]}</span>
+                </div>
+              )}
+            </div>
+
+            <div class="project-info">
+              {project.featured && <span class="featured-badge">Featured</span>}
+              <h3 class="project-title">{project.title}</h3>
+              <p class="project-desc">{project.description}</p>
+
+              <div class="project-tech">
+                {project.tech.map((t) => (
+                  <span class="tech-pill">{t}</span>
+                ))}
+              </div>
+
+              {project.miniApps && (
+                <ul class="miniapps-list">
+                  {project.miniApps.map((app) => (
+                    <li>
+                      <a
+                        href={app.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {app.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <div class="project-links">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="link-btn primary"
+                  >
+                    ↗ Live Site
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="link-btn ghost"
+                  >
+                    GitHub
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .project-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  .project-card.reverse {
+    direction: rtl;
+  }
+
+  .project-card.reverse > * {
+    direction: ltr;
+  }
+
+  /* Media */
+  .project-media {
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--sand);
+    aspect-ratio: 16 / 10;
+    box-shadow: 0 12px 40px rgba(44, 36, 34, 0.12);
+  }
+
+  .project-media img,
+  .project-media video,
+  .project-media iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .media-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--sand), var(--cream));
+  }
+
+  .media-placeholder span {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    color: var(--terracotta);
+    opacity: 0.3;
+    font-weight: 700;
+  }
+
+  /* Info */
+  .featured-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    background: rgba(201, 106, 58, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-title {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    color: var(--charcoal-soft);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .tech-pill {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    background: var(--white);
+    border: 1px solid var(--sand);
+    color: var(--charcoal-soft);
+    padding: 0.25rem 0.7rem;
+    border-radius: 2rem;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .miniapps-list {
+    margin: 1rem 0 1.25rem;
+    padding-left: 1.2rem;
+    color: var(--charcoal-soft);
+  }
+
+  .miniapps-list li {
+    margin-bottom: 0.35rem;
+  }
+
+  .miniapps-list a {
+    color: var(--terracotta);
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+
+  .miniapps-list a:hover {
+    text-decoration: underline;
+  }
+
+  .link-btn {
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.6rem 1.4rem;
+    border-radius: 2rem;
+    transition: all 0.2s;
+  }
+
+  .link-btn.primary {
+    background: var(--terracotta);
+    color: var(--white);
+  }
+
+  .link-btn.primary:hover {
+    background: var(--terracotta-light);
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+
+  .link-btn.ghost {
+    border: 1.5px solid var(--charcoal);
+    color: var(--charcoal);
+  }
+
+  .link-btn.ghost:hover {
+    border-color: var(--terracotta);
+    color: var(--terracotta);
+    opacity: 1;
+  }
+
+  @media (max-width: 800px) {
+    .project-card,
+    .project-card.reverse {
+      grid-template-columns: 1fr;
+      direction: ltr;
+      gap: 1.75rem;
+    }
+  }
+</style>
