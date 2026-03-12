@@ -10,8 +10,8 @@
         <h1><em>Deva</em>dharshini</h1>
         <p class="tagline">
           Software developer with 5 years of experience building scalable,
-          production-ready web applications — with care, curiosity, and clean
-          code.
+          production-ready web applications — focused on quality, ownership,
+          and getting things right.
         </p>
         <div class="hero-actions">
           <a href="#projects" class="btn-primary">See My Work</a>
@@ -22,7 +22,7 @@
       <div class="hero-card fade-up" style="animation-delay: 0.2s">
         <div class="card-inner">
           <div class="avatar-ring">
-            <div class="avatar-placeholder">DN</div>
+            <img src="/profile.jpeg" alt="Devadharshini Nagarajan" class="avatar-img" />
           </div>
           <div class="status-badge">
             <span class="dot"></span> Available for work
@@ -169,22 +169,12 @@
     justify-content: center;
   }
 
-  .avatar-placeholder {
+  .avatar-img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: var(--sand);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--terracotta);
+    object-fit: cover;
   }
-
-  /* Replace .avatar-placeholder with an <img> once you have a photo:
-     <img src="/avatar.jpg" alt="Your Name" class="avatar-img" /> */
 
   .status-badge {
     display: flex;
