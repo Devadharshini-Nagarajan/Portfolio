@@ -39,9 +39,9 @@
       </div>
 
       <div class="contact-right">
-        <form class="contact-form" id="contact-form">
+        <form class="contact-form" id="contact-form" action="https://formspree.io/f/xdawgjpg" method="POST">
           <div class="form-group">
-            <label for="name">Deva</label>
+            <label for="name">Your Name</label>
             <input
               type="text"
               id="name"
@@ -110,18 +110,32 @@
     btn.disabled = true;
     btn.querySelector(".btn-text")!.textContent = "Sending...";
 
-    // ✅ Replace this with your preferred form handler:
-    // - Formspree: action="https://formspree.io/f/yourkey" method="POST"
-    // - Netlify: add data-netlify="true" to <form>
-    // - EmailJS, Resend, your own API endpoint, etc.
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
 
-    // Simulated success for now:
-    await new Promise((r) => setTimeout(r, 1200));
-    status.textContent = "✓ Message sent! I'll get back to you soon.";
-    status.style.color = "#3A7A35";
-    form.reset();
-    btn.disabled = false;
-    btn.querySelector(".btn-text")!.textContent = "Send Message";
+      if (response.ok) {
+        status.textContent = "✓ Message sent! I'll get back to you soon.";
+        status.style.color = "#3A7A35";
+        form.reset();
+      } else {
+        const data = await response.json();
+        const errorMsg =
+          data?.errors?.map((e: { message: string }) => e.message).join(", ") ||
+          "Something went wrong. Please try again.";
+        status.textContent = `✗ ${errorMsg}`;
+        status.style.color = "#c0392b";
+      }
+    } catch {
+      status.textContent = "✗ Network error. Please try again.";
+      status.style.color = "#c0392b";
+    } finally {
+      btn.disabled = false;
+      btn.querySelector(".btn-text")!.textContent = "Send Message";
+    }
   });
 </script>
 
