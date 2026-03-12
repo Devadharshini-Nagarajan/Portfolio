@@ -1,0 +1,217 @@
+---
+const certifications = [
+  {
+    title: "Mid-Level Angular Developer",
+    issuer: "Certificates.dev",
+    issued: "Feb 2026",
+    credentialId: "CMAD-008253",
+    credentialUrl:
+      "https://certificates.dev/angular/certificates/a0fb7457-036d-4e5c-a7b3-0d7519146680",
+    skills: ["Front-End Development", "Angular"],
+  },
+  {
+    title: "Junior Angular Developer",
+    issuer: "Certificates.dev",
+    issued: "Apr 2025",
+    credentialId: "CJAD-005633",
+    credentialUrl:
+      "https://certificates.dev/angular/certificates/9eaa8095-3340-45c5-b4b9-bc2130f2c334",
+    skills: ["Angular", "TypeScript"],
+  },
+];
+---
+
+<section id="certifications">
+  <div class="container">
+    <p class="section-label">Credentials</p>
+    <h2 class="section-title">Certifications</h2>
+
+    <div class="certification-list">
+      {
+        certifications.map((cert, i) => (
+          <div class="certification-item">
+            <div class="cert-marker">
+              <div class="marker-dot" />
+              {i < certifications.length - 1 && <div class="marker-line" />}
+            </div>
+            <div class="cert-content">
+              <div class="cert-header">
+                <div>
+                  <h3 class="cert-title">{cert.title}</h3>
+                  <p class="cert-issuer">{cert.issuer}</p>
+                </div>
+                <span class="cert-date">{cert.issued}</span>
+              </div>
+              <p class="cert-id">
+                Credential ID:{" "}
+                <a
+                  href={cert.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <code>{cert.credentialId}</code>
+                </a>
+              </p>
+              <div class="cert-skills">
+                {cert.skills.map((skill) => (
+                  <span class="skill-badge">{skill}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  #certifications {
+    background: var(--white);
+    border-top: 1px solid var(--sand);
+    border-bottom: 1px solid var(--sand);
+  }
+
+  .certification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .certification-item {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1.5rem;
+  }
+
+  .cert-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.35rem;
+  }
+
+  .marker-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px var(--terracotta);
+    flex-shrink: 0;
+  }
+
+  .marker-line {
+    width: 2px;
+    flex: 1;
+    background: var(--sand);
+    margin: 0.5rem 0;
+    min-height: 2rem;
+  }
+
+  .cert-content {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 1rem;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.2s;
+  }
+
+  .cert-content:hover {
+    box-shadow: 0 6px 24px rgba(44, 36, 34, 0.07);
+  }
+
+  .cert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .cert-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 0.2rem;
+  }
+
+  .cert-issuer {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .cert-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .cert-id {
+    font-size: 0.8rem;
+    color: var(--charcoal-soft);
+    margin: 0.75rem 0;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    background: var(--white);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    color: var(--terracotta);
+    font-weight: 600;
+  }
+
+  .cert-link {
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .cert-link:hover code {
+    opacity: 0.7;
+    text-decoration: underline;
+  }
+
+  .cert-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-badge {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    background: var(--white);
+    border: 1px solid var(--sand);
+    color: var(--charcoal-soft);
+    padding: 0.25rem 0.6rem;
+    border-radius: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .certification-item {
+      grid-template-columns: 2rem 1fr;
+      gap: 1rem;
+    }
+
+    .cert-title {
+      font-size: 1rem;
+    }
+
+    .cert-header {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .cert-date {
+      font-size: 0.7rem;
+    }
+  }
+</style>

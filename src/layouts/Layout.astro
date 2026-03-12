@@ -5,42 +5,52 @@ interface Props {
 const { title = "Deva — Developer & Engineer" } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Personal portfolio of a developer and engineer." />
+    <meta
+      name="description"
+      content="Personal portfolio of a developer and engineer."
+    />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <div class="bg-shapes" id="bgShapes"></div>
     <slot />
   </body>
 </html>
 
 <style is:global>
   :root {
-    --cream: #F4EDE4;
-    --sand: #E8D8C6;
-    --terracotta: #C96A3A;
-    --terracotta-light: #E08050;
-    --charcoal: #2C2422;
-    --charcoal-soft: #4A3F3A;
-    --muted: #9A8880;
-    --white: #FDFAF7;
+    /* Dark mode (Moon) - Default */
+    --cream: #1a1625;
+    --sand: #2d2436;
+    --terracotta: #b8860b;
+    --terracotta-light: #daa520;
+    --charcoal: #e8dcc8;
+    --charcoal-soft: #c4b5a0;
+    --muted: #8b7d6b;
+    --white: #0f0b15;
 
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'DM Sans', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-display: "Playfair Display", Georgia, serif;
+    --font-body: "DM Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
 
     --section-gap: 8rem;
     --max-width: 1100px;
   }
 
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -48,6 +58,9 @@ const { title = "Deva — Developer & Engineer" } = Astro.props;
 
   html {
     scroll-behavior: smooth;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 
   body {
@@ -57,8 +70,12 @@ const { title = "Deva — Developer & Engineer" } = Astro.props;
     font-size: 1rem;
     line-height: 1.7;
     font-weight: 300;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
     /* Subtle paper texture */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    cursor: none;
   }
 
   ::selection {
@@ -67,18 +84,33 @@ const { title = "Deva — Developer & Engineer" } = Astro.props;
   }
 
   /* Custom scrollbar */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--cream); }
-  ::-webkit-scrollbar-thumb { background: var(--terracotta); border-radius: 3px; }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--cream);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--terracotta);
+    border-radius: 3px;
+  }
 
   a {
     color: var(--terracotta);
     text-decoration: none;
     transition: opacity 0.2s;
+    cursor: none;
   }
-  a:hover { opacity: 0.75; }
+  a:hover {
+    opacity: 0.75;
+  }
 
-  img, video {
+  button {
+    cursor: none;
+  }
+
+  img,
+  video {
     max-width: 100%;
     display: block;
   }
@@ -103,7 +135,14 @@ const { title = "Deva — Developer & Engineer" } = Astro.props;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
     line-height: 1.15;
-    color: var(--charcoal);
+    background: linear-gradient(
+      135deg,
+      var(--charcoal) 0%,
+      var(--terracotta) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 3rem;
   }
 
@@ -120,10 +159,102 @@ const { title = "Deva — Developer & Engineer" } = Astro.props;
 
   /* Fade-in animation */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   .fade-up {
     animation: fadeUp 0.7s ease forwards;
   }
+
+  /* Animated background shapes */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .bg-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .shape {
+    position: absolute;
+    opacity: 0.05;
+  }
+
+  .shape.moon {
+    font-size: 4rem;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .shape.star {
+    animation: rotate 20s linear infinite;
+  }
 </style>
+
+<script>
+  // Custom moon cursor that follows the mouse
+  const moonCursor = document.createElement("div");
+  moonCursor.textContent = "🌙";
+  moonCursor.style.position = "fixed";
+  moonCursor.style.pointerEvents = "none";
+  moonCursor.style.fontSize = "1.5rem";
+  moonCursor.style.zIndex = "9999";
+  moonCursor.style.opacity = "0.8";
+  document.body.appendChild(moonCursor);
+
+  let mouseX = 0,
+    mouseY = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    moonCursor.style.left = mouseX - 12 + "px";
+    moonCursor.style.top = mouseY - 12 + "px";
+  });
+
+  // // Animated background shapes
+  // const bgShapes = document.getElementById("bgShapes");
+  // if (bgShapes) {
+  //   const positions = [
+  //     { top: "10%", left: "5%", delay: 0 },
+  //     { top: "80%", left: "85%", delay: 2 },
+  //     { top: "40%", left: "90%", delay: 4 },
+  //   ];
+  //
+  //   positions.forEach((pos) => {
+  //     const shape = document.createElement("div");
+  //     shape.className = "shape moon";
+  //     shape.textContent = "🌙";
+  //     shape.style.top = pos.top;
+  //     shape.style.left = pos.left;
+  //     shape.style.animationDelay = pos.delay + "s";
+  //     bgShapes.appendChild(shape);
+  //   });
+  // }
+</script>
