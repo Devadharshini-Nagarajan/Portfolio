@@ -15,6 +15,14 @@ const { title = "Deva — Software Engineer" } = Astro.props;
       content="Personal portfolio of a developer and engineer."
     />
     <title>{title}</title>
+    <!-- Google Analytics -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-YQJEQ6HF5F"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YQJEQ6HF5F');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
